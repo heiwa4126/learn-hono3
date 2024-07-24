@@ -4,7 +4,8 @@
 		"dev": "bun run --hot src/index.ts",
 		"format": "biome format --write .",
 		"lint": "biome lint .",
-		"check": "biome check --apply ."
+		"check": "biome check --apply .",
+		"ex8": "curl -X POST -H \"Content-Type: application/x-www-form-urlencoded\" -d \"title=hello&body=goodbye\" localhost:3000/rpc/posts"
 	},
 	"dependencies": {
 		"@hono/zod-validator": "^0.2.2",

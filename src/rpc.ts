@@ -1,27 +1,15 @@
+import { zValidator } from "@hono/zod-validator";
 import { Hono } from "hono";
 import { z } from "zod";
-import { zValidator } from "@hono/zod-validator";
 
 const app = new Hono();
 
 const route = app.post(
 	"/posts",
-	zValidator(
-		"form",
-		z.object({
-			title: z.string(),
-			body: z.string(),
-		}),
-	),
+	zValidator("form", z.object({ title: z.string(), body: z.string() })),
 	(c) => {
-		// ...
-		return c.json(
-			{
-				ok: true,
-				message: "Created!",
-			},
-			201,
-		);
+		const { title, body } = c.req.valid("form");
+		return c.json({ ok: true, message: "Created!", title, body }, 201);
 	},
 );
 
