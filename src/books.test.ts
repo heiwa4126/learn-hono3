@@ -1,11 +1,22 @@
 import { describe, expect, test } from "bun:test";
 import { testClient } from "hono/testing";
+import type { ZodIssue } from "zod";
 import app, { type AppType } from "./books";
 
 const client = testClient<AppType>(app);
 
-function getZErrMsg(o: any): any | undefined {
-	return o?.error?.issues?.[0]?.message;
+// これちょっとヤダ。どうにかする
+type ZodErrorResponse = {
+	success: false;
+	error: {
+		// see https://zod.dev/ERROR_HANDLING?id=zoderror
+		issues: ZodIssue[];
+		name: "ZodError";
+	};
+};
+
+function getZErrMsg(ze: ZodErrorResponse): string | undefined {
+	return ze.error.issues[0].message;
 }
 
 describe("books app", () => {
@@ -29,15 +40,15 @@ describe("books app", () => {
 		// get index with non-numeric ID
 		const res2 = await c2.$get({ param: { id: "abc" } });
 		expect(res2.status).toEqual(400);
-		expect(getZErrMsg(await res2.json())).toEqual(
-			"Expected number, received nan",
-		);
+		expect(
+			getZErrMsg((await res2.json()) as unknown as ZodErrorResponse),
+		).toEqual("Expected number, received nan");
 
 		// get index with negative number ID
 		const res3 = await c2.$get({ param: { id: "-1000" } });
 		expect(res3.status).toEqual(400);
-		expect(getZErrMsg(await res3.json())).toEqual(
-			"Number must be greater than or equal to 0",
-		);
+		expect(
+			getZErrMsg((await res3.json()) as unknown as ZodErrorResponse),
+		).toEqual("Number must be greater than or equal to 0");
 	});
 });

@@ -3,7 +3,7 @@ import app from "./rpc";
 
 describe("rpc app", () => {
 	test("POST /posts", async () => {
-		// zValidator("form")だと、testClient()で書けない...
+		// zValidator("form",)だと、testClient()で書けない...
 		// 参照: <https://hono.dev/docs/guides/testing>
 		const title = "hello";
 		const body = "goodbye";
