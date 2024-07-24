@@ -1,13 +1,17 @@
 {
-  "name": "hono3",
-  "scripts": {
-    "dev": "bun run --hot src/index.ts"
-  },
-  "dependencies": {
-    "@hono/zod-validator": "^0.2.2",
-    "hono": "^4.5.1"
-  },
-  "devDependencies": {
-    "@types/bun": "latest"
-  }
+	"name": "hono3",
+	"scripts": {
+		"dev": "bun run --hot src/index.ts",
+		"format": "biome format --write .",
+		"lint": "biome lint .",
+		"check": "biome check --apply ."
+	},
+	"dependencies": {
+		"@hono/zod-validator": "^0.2.2",
+		"hono": "^4.5.1"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.8.3",
+		"@types/bun": "latest"
+	}
 }

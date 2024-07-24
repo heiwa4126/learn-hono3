@@ -15,11 +15,10 @@ describe("books app", () => {
 		expect(await res.json()).toEqual("create a book");
 	});
 	test("get index with ID", async () => {
-		const c2 = client[":id"]
-		const res1 = await c2.$get({param: { id: "123" }});
+		const c2 = client[":id"];
+		const res1 = await c2.$get({ param: { id: "123" } });
 		expect(await res1.json()).toEqual("get 123");
-		const res2 = await c2.$get({param: { id: "xyz" }});
+		const res2 = await c2.$get({ param: { id: "xyz" } });
 		expect(await res2.json()).toEqual("get xyz");
 	});
-
 });
