@@ -14,7 +14,7 @@
 		"hono": "^4.5.1"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^1.8.3",
+		"@biomejs/biome": "^2.2.4",
 		"@types/bun": "latest"
 	}
 }
