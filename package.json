@@ -10,7 +10,7 @@
 		"ex8": "curl -X POST -H \"Content-Type: application/x-www-form-urlencoded\" -d \"title=hello&body=goodbye\" localhost:3000/rpc/posts"
 	},
 	"dependencies": {
-		"@hono/zod-validator": "^0.4.1",
+		"@hono/zod-validator": "^0.7.5",
 		"hono": "^4.5.1"
 	},
 	"devDependencies": {
