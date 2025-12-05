@@ -40,15 +40,15 @@ describe("books app", () => {
 		// get index with non-numeric ID
 		const res2 = await c2.$get({ param: { id: "abc" } });
 		expect(res2.status).toEqual(400);
-		expect(
-			getZErrMsg((await res2.json()) as unknown as ZodErrorResponse),
-		).toEqual("Expected number, received nan");
+		expect(getZErrMsg((await res2.json()) as unknown as ZodErrorResponse)).toEqual(
+			"Expected number, received nan",
+		);
 
 		// get index with negative number ID
 		const res3 = await c2.$get({ param: { id: "-1000" } });
 		expect(res3.status).toEqual(400);
-		expect(
-			getZErrMsg((await res3.json()) as unknown as ZodErrorResponse),
-		).toEqual("Number must be greater than or equal to 0");
+		expect(getZErrMsg((await res3.json()) as unknown as ZodErrorResponse)).toEqual(
+			"Number must be greater than or equal to 0",
+		);
 	});
 });
