@@ -5,9 +5,10 @@
 		"format": "biome format --write .",
 		"format:full": "pnpm pkg fix && biome format --write . && dprint fmt && textlint --fix \"**/*.md\"",
 		"lint": "biome lint .",
-		"build": "bun build ./src/index.ts --minify --outfile ./dist/hono3.js",
-		"compile": "bun build --compile ./src/index.ts --outfile ./dist/hono3",
 		"check": "biome check --apply .",
+		"build": "bun build ./src/index.ts --minify --outfile ./dist/hono3.js",
+		"start": "bun run ./dist/hono3.js",
+		"compile": "bun build --compile ./src/index.ts --outfile ./dist/hono3",
 		"ex8": "curl -X POST -H \"Content-Type: application/x-www-form-urlencoded\" -d \"title=hello&body=goodbye\" localhost:3000/rpc/posts"
 	},
 	"dependencies": {
