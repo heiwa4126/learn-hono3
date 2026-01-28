@@ -6,6 +6,7 @@
 To install dependencies:
 
 ```sh
+bun audit
 bun install
 ```
 
