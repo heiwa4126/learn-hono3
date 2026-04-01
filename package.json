@@ -1,11 +1,12 @@
 {
 	"name": "hono3",
+	"version": "",
 	"scripts": {
 		"dev": "bun run --hot src/index.ts",
-		"format": "biome format --write .",
-		"format:full": "pnpm pkg fix && biome format --write . && dprint fmt && textlint --fix \"**/*.md\"",
-		"lint": "biome lint .",
-		"check": "biome check --apply .",
+		"preinstall": "bun audit",
+		"format": "oxfmt",
+		"lint": "oxlint",
+		"check": "oxfmt && oxlint --fix",
 		"build": "bun build ./src/index.ts --minify --outfile ./dist/hono3.js",
 		"start": "bun run ./dist/hono3.js",
 		"compile": "bun build --compile ./src/index.ts --outfile ./dist/hono3",
@@ -13,11 +14,9 @@
 	},
 	"dependencies": {
 		"@hono/zod-validator": "^0.7.6",
-		"hono": "^4.12.3"
+		"hono": "^4.12.9"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.4.4",
-		"@types/bun": "^1.3.9"
-	},
-	"version": ""
+		"@types/bun": "^1.3.11"
+	}
 }
